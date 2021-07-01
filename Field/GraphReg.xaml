@@ -1,0 +1,53 @@
+﻿<Window x:Class="Field.GraphReg"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Field"
+        mc:Ignorable="d"
+        Title="GraphReg" Height="465" Width="300">
+    <Window.Resources>
+        <Style x:Key="Stylish">
+            <Setter Property="Control.Foreground" Value="White" />
+            <Setter Property="Control.Margin" Value="10, 0" />
+        </Style>
+    </Window.Resources>
+
+    <StackPanel>
+        <StackPanel.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#a9acb1" Offset="0.103"/>
+                <GradientStop Color="#02c58b" Offset="1"/>
+            </LinearGradientBrush>
+        </StackPanel.Background>
+        <TextBlock Style="{StaticResource Stylish}" Text="Enter graph values" HorizontalAlignment="Center" FontSize="24"/>
+        <TextBlock Style="{StaticResource Stylish}" FontSize="16">Function:</TextBlock>
+        <ComboBox x:Name="functionBox" Margin="10, 0">
+            <TextBlock>Linear: f(x) = a * x</TextBlock>
+            <TextBlock>Quadratic: f(x) = a * x * x</TextBlock>
+            <TextBlock>Sin: f(x) = a * Sin(x)</TextBlock>
+            <TextBlock>Cos: f(x) = a * Cos(x)</TextBlock>
+        </ComboBox>
+        <TextBlock Style="{StaticResource Stylish}" FontSize="16">Area of definition:</TextBlock>
+        <TextBlock Style="{StaticResource Stylish}" >From:</TextBlock>
+        <TextBox x:Name="fromField" FontSize="18" Margin="10, 0"/>
+        <TextBlock Style="{StaticResource Stylish}">To</TextBlock>
+        <TextBox x:Name="toField" FontSize="18" Margin="10, 0"/>
+        <TextBlock Style="{StaticResource Stylish}" FontSize="16">Begin point:</TextBlock>
+        <TextBlock Style="{StaticResource Stylish}">X:</TextBlock>
+        <TextBox x:Name="xField" FontSize="18" Margin="10, 0"/>
+        <TextBlock Style="{StaticResource Stylish}">Y:</TextBlock>
+        <TextBox x:Name="yField" FontSize="18" Margin="10, 0"/>
+        <TextBlock Style="{StaticResource Stylish}" FontSize="16">Color</TextBlock>
+        <ComboBox x:Name="colorBox" Margin="10, 0">
+            <TextBlock>Black</TextBlock>
+            <TextBlock>Blue</TextBlock>
+            <TextBlock>Red</TextBlock>
+            <TextBlock>Green</TextBlock>
+            <TextBlock>Yellow</TextBlock>
+        </ComboBox>
+        <TextBlock Style="{StaticResource Stylish}" FontSize="16">Thickness:</TextBlock>
+        <TextBox x:Name="thicknessField" FontSize="18" Margin="10, 0"/>
+        <Button IsDefault="True" Margin="10" FontSize="18" Height="30" Content="Apply" Foreground="White" BorderBrush="#FF939393" Background="#FF9CE4C7" Click="Button_Click"/>
+    </StackPanel>
+</Window>

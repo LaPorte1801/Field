@@ -1,0 +1,60 @@
+﻿<Window x:Class="Field.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Field"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="700" Width="950" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" MinHeight="700" MinWidth="1000">
+   <Grid x:Name="mainGrid" Height="auto" Width="auto" ShowGridLines="True">
+       
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="graphBlock" Width="4*"/>
+            <ColumnDefinition x:Name="functionBlock" Width="1.5*"/>
+        </Grid.ColumnDefinitions>
+        <Canvas x:Name="field"/>
+        <Grid x:Name="graphGrid" Grid.Column="0" ShowGridLines="True" >
+
+        </Grid>
+        <StackPanel Grid.Column="1">
+            <StackPanel.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#a9acb1" Offset="0.103"/>
+                    <GradientStop Color="#02c58b" Offset="1"/>
+                </LinearGradientBrush>
+            </StackPanel.Background>
+            <TextBlock Margin="10, 0" Foreground="White" Text="Enter graph values" HorizontalAlignment="Center" FontSize="24"/>
+            <TextBlock Margin="10, 0" Foreground="White" FontSize="16">Function:</TextBlock>
+            <ComboBox x:Name="functionBox" Margin="10, 0">
+                <TextBlock>Linear: f(x) = a * x</TextBlock>
+                <TextBlock>Quadratic: f(x) = a * x * x</TextBlock>
+                <TextBlock>Sin: f(x) = a * Sin(x)</TextBlock>
+                <TextBlock>Cos: f(x) = a * Cos(x)</TextBlock>
+            </ComboBox>
+            <TextBlock Margin="10, 0" Foreground="White" FontSize="16">Area of definition:</TextBlock>
+            <TextBlock Margin="10, 0" Foreground="White">From:</TextBlock>
+            <TextBox x:Name="fromField" FontSize="18" Margin="10, 0"/>
+            <TextBlock Margin="10, 0" Foreground="White" >To</TextBlock>
+            <TextBox x:Name="toField" FontSize="18" Margin="10, 0"/>
+            <TextBlock Margin="10, 0" Foreground="White" FontSize="16">Begin point:</TextBlock>
+            <TextBlock Margin="10, 0" Foreground="White">X:</TextBlock>
+            <TextBox x:Name="xField" FontSize="18" Margin="10, 0"/>
+            <TextBlock Margin="10, 0" Foreground="White">Y:</TextBlock>
+            <TextBox x:Name="yField" FontSize="18" Margin="10, 0"/>
+            <TextBlock Margin="10, 0" Foreground="White" FontSize="16">Color</TextBlock>
+            <ComboBox x:Name="colorBox" Margin="10, 0">
+                <TextBlock>Black</TextBlock>
+                <TextBlock>Blue</TextBlock>
+                <TextBlock>Red</TextBlock>
+                <TextBlock>Green</TextBlock>
+                <TextBlock>Yellow</TextBlock>
+            </ComboBox>
+            <TextBlock Margin="10, 0" Foreground="White" FontSize="16">Thickness:</TextBlock>
+            <TextBox x:Name="thicknessField" FontSize="18" Margin="10, 0"/>
+            <Button IsDefault="True" Margin="10" FontSize="18" Height="30" Content="Apply" Foreground="White" BorderBrush="#FF939393" Background="#FF9CE4C7" Click="Button_Click" />
+            <TextBlock Margin="10, 0" Foreground="White" FontSize="16">Cell size:</TextBlock>
+            <Slider x:Name="cellSizeSlider" Value="5" Minimum="5" Maximum="100" ValueChanged="cellSizeSlider_ValueChanged"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
