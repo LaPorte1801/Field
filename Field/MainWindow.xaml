@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:Field"
         mc:Ignorable="d"
         Title="MainWindow" Height="700" Width="950" SizeChanged="Window_SizeChanged" Loaded="Window_Loaded" MinHeight="700" MinWidth="1000">
-   <Grid x:Name="mainGrid" Height="auto" Width="auto" ShowGridLines="True">
-       
+    <Grid x:Name="mainGrid" Height="auto" Width="auto" ShowGridLines="True">
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition x:Name="graphBlock" Width="4*"/>
             <ColumnDefinition x:Name="functionBlock" Width="1.5*"/>
@@ -31,28 +31,30 @@
                 <TextBlock>Sin: f(x) = a * Sin(x)</TextBlock>
                 <TextBlock>Cos: f(x) = a * Cos(x)</TextBlock>
             </ComboBox>
-            <TextBlock Margin="10, 0" Foreground="White" FontSize="16">Area of definition:</TextBlock>
-            <TextBlock Margin="10, 0" Foreground="White">From:</TextBlock>
+            <TextBlock Margin="10, 0" Foreground="White" Text="Parameter (a):" FontSize="16"/>
+            <TextBox x:Name="tbxParameterA" Margin="10, 0" FontSize="18"/>
+            <TextBlock Margin="10, 0" Foreground="White" FontSize="16"><Run Text="Area of definition:"/></TextBlock>
+            <TextBlock Margin="10, 0" Foreground="White"><Run Text="From:"/></TextBlock>
             <TextBox x:Name="fromField" FontSize="18" Margin="10, 0"/>
-            <TextBlock Margin="10, 0" Foreground="White" >To</TextBlock>
+            <TextBlock Margin="10, 0" Foreground="White" ><Run Text="To"/></TextBlock>
             <TextBox x:Name="toField" FontSize="18" Margin="10, 0"/>
-            <TextBlock Margin="10, 0" Foreground="White" FontSize="16">Begin point:</TextBlock>
-            <TextBlock Margin="10, 0" Foreground="White">X:</TextBlock>
+            <TextBlock Margin="10, 0" Foreground="White" FontSize="16"><Run Text="Begin point:"/></TextBlock>
+            <TextBlock Margin="10, 0" Foreground="White"><Run Text="X:"/></TextBlock>
             <TextBox x:Name="xField" FontSize="18" Margin="10, 0"/>
             <TextBlock Margin="10, 0" Foreground="White">Y:</TextBlock>
             <TextBox x:Name="yField" FontSize="18" Margin="10, 0"/>
-            <TextBlock Margin="10, 0" Foreground="White" FontSize="16">Color</TextBlock>
+            <TextBlock Margin="10, 0" Foreground="White" FontSize="16"><Run Text="Color"/></TextBlock>
             <ComboBox x:Name="colorBox" Margin="10, 0">
-                <TextBlock>Black</TextBlock>
-                <TextBlock>Blue</TextBlock>
-                <TextBlock>Red</TextBlock>
-                <TextBlock>Green</TextBlock>
-                <TextBlock>Yellow</TextBlock>
+                <TextBlock><Run Text="Black"/></TextBlock>
+                <TextBlock><Run Text="Blue"/></TextBlock>
+                <TextBlock><Run Text="Red"/></TextBlock>
+                <TextBlock><Run Text="Green"/></TextBlock>
+                <TextBlock><Run Text="Yellow"/></TextBlock>
             </ComboBox>
-            <TextBlock Margin="10, 0" Foreground="White" FontSize="16">Thickness:</TextBlock>
+            <TextBlock Margin="10, 0" Foreground="White" FontSize="16"><Run Text="Thickness:"/></TextBlock>
             <TextBox x:Name="thicknessField" FontSize="18" Margin="10, 0"/>
             <Button IsDefault="True" Margin="10" FontSize="18" Height="30" Content="Apply" Foreground="White" BorderBrush="#FF939393" Background="#FF9CE4C7" Click="Button_Click" />
-            <TextBlock Margin="10, 0" Foreground="White" FontSize="16">Cell size:</TextBlock>
+            <TextBlock Margin="10, 0" Foreground="White" FontSize="16"><Run Text="Cell size:"/></TextBlock>
             <Slider x:Name="cellSizeSlider" Value="5" Minimum="5" Maximum="100" ValueChanged="cellSizeSlider_ValueChanged"/>
         </StackPanel>
 

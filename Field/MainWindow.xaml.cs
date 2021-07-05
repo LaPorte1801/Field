@@ -51,6 +51,15 @@ namespace Field
 
             field.Height = graphGrid.Height;
             field.Width = graphGrid.Width;
+
+            if (IsLoaded)
+            {
+                field.Children.Remove(lattice);
+                lattice.Height = field.ActualHeight;
+                lattice.Width = field.ActualWidth;
+                lattice.LatticeRender();
+                field.Children.Add(lattice);
+            }
         }
 
         private void cellSizeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
@@ -60,6 +69,8 @@ namespace Field
                 lattice.CellSize = (int)e.NewValue;
                 cellSize = (int)e.NewValue;
                 field.Children.Remove(lattice);
+                lattice.Height = field.ActualHeight;
+                lattice.Width = field.ActualWidth;
                 lattice.LatticeRender();
                 field.Children.Add(lattice);
             }
@@ -144,7 +155,7 @@ namespace Field
         {
             try
             {
-                graph = new Graph(Convert.ToInt32(thicknessField.Text), ColorSwitch(), 1, Convert.ToDouble(fromField.Text),
+                graph = new Graph(Convert.ToInt32(thicknessField.Text), ColorSwitch(), Convert.ToDouble(tbxParameterA.Text), Convert.ToDouble(fromField.Text),
                     Convert.ToDouble(toField.Text), new Point(Convert.ToInt32(xField.Text), Convert.ToInt32(yField.Text)),
                     FuncSwicth());
                 SetGraph(graphGrid, cellSize, graph);
