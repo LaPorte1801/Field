@@ -31,10 +31,12 @@ namespace Field
 
         public Brush Color { get; set; }
 
-        public Lattice(int cellSize, Brush color)
+        public Lattice(int cellSize, Brush color, double height, double width)
         {
             CellSize = cellSize;
             Color = color;
+            Height = height;
+            Width = width;
         }
 
         public void LatticeRender()
@@ -43,14 +45,14 @@ namespace Field
             List<Line> horLines = new List<Line>();
 
             //заполнение коллекций линий
-            for (int i = 0; i < this.ActualWidth / cellSize; i++)
+            for (int i = 0; i < this.Width / cellSize; i++)
             {
                 verLines.Add(new Line());
                 verLines[i].StrokeThickness = 0.5;
                 verLines[i].Stroke = Color;
             }
 
-            for (int i = 0; i < this.ActualHeight / cellSize; i++)
+            for (int i = 0; i < this.Height / cellSize; i++)
             {
                 horLines.Add(new Line());
                 horLines[i].StrokeThickness = 0.5;
@@ -58,18 +60,18 @@ namespace Field
             }
 
             //расстановка линий
-            for (int i = 0; i < this.ActualWidth / cellSize; i++)
+            for (int i = 0; i < this.Width / cellSize; i++)
             {
                 verLines[i].X1 = i * cellSize;
                 verLines[i].X2 = i * cellSize;
                 verLines[i].Y1 = 0;
-                verLines[i].Y2 = this.ActualHeight;
+                verLines[i].Y2 = this.Height;
             }
 
-            for (int i = 0; i < this.ActualHeight / cellSize; i++)
+            for (int i = 0; i < this.Height / cellSize; i++)
             {
                 horLines[i].X1 = 0;
-                horLines[i].X2 = this.ActualWidth;
+                horLines[i].X2 = this.Width;
                 horLines[i].Y1 = i * cellSize;
                 horLines[i].Y2 = i * cellSize;
             }

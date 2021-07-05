@@ -23,26 +23,25 @@ namespace Field
     {
         private static int cellSize = 20;
         Graph graph;
+        Lattice lattice;
 
         public MainWindow()
         {
             InitializeComponent();
-
-           
         }
 
         #region Обработчики
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Lattice lattice = new Lattice(cellSize, Brushes.Black);
+            lattice = new Lattice(cellSize, Brushes.Black, field.ActualHeight, field.ActualWidth);
             lattice.LatticeRender();
 
 
             field.Height = graphGrid.ActualHeight;
             field.Width = graphGrid.ActualWidth;
 
-            graphGrid.Children.Add(lattice);
+            field.Children.Add(lattice);
         }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -56,7 +55,14 @@ namespace Field
 
         private void cellSizeSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            cellSize = (int)e.NewValue;
+            if (IsLoaded)
+            {
+                lattice.CellSize = (int)e.NewValue;
+                cellSize = (int)e.NewValue;
+                field.Children.Remove(lattice);
+                lattice.LatticeRender();
+                field.Children.Add(lattice);
+            }
         }
         #endregion
         
@@ -113,26 +119,26 @@ namespace Field
             grid.Children.Add(canvas);
         }
 
-        private void createGraph_Click(object sender, RoutedEventArgs e)
-        {
-            //GraphReg graphReg = new GraphReg();
-            //graphReg.ShowDialog();
+        //private void createGraph_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //GraphReg graphReg = new GraphReg();
+        //    //graphReg.ShowDialog();
 
-            //Brush color = null;
-            //graphReg.ColorSelector(color);
+        //    //Brush color = null;
+        //    //graphReg.ColorSelector(color);
 
-            //Func<double, double, double> func = Functions.LinearFuncDelegate;
-            //graphReg.FuncSelector(func);
+        //    //Func<double, double, double> func = Functions.LinearFuncDelegate;
+        //    //graphReg.FuncSelector(func);
 
-            //Graph graph;
+        //    //Graph graph;
 
-            //graph = new Graph(Convert.ToInt32(graphReg.thicknessField.Text), color,
-            //    Convert.ToDouble(graphReg.toField.Text),
-            //    Convert.ToDouble(graphReg.fromField.Text), Convert.ToDouble(graphReg.toField.Text),
-            //    new Point(Convert.ToDouble(graphReg.xField.Text), Convert.ToDouble(graphReg.yField.Text)), func);
+        //    //graph = new Graph(Convert.ToInt32(graphReg.thicknessField.Text), color,
+        //    //    Convert.ToDouble(graphReg.toField.Text),
+        //    //    Convert.ToDouble(graphReg.fromField.Text), Convert.ToDouble(graphReg.toField.Text),
+        //    //    new Point(Convert.ToDouble(graphReg.xField.Text), Convert.ToDouble(graphReg.yField.Text)), func);
 
-            //SetGraph(graphGrid, graph.Func, cellSize, graph);
-        }
+        //    //SetGraph(graphGrid, graph.Func, cellSize, graph);
+        //}
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
